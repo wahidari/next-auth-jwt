@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { UserContext } from "@utils/useUser";
 import Head from 'next/head'
 import Footer from '@components/Footer'
 import Navbar from '@components/Navbar'
@@ -24,6 +26,8 @@ export async function getServerSideProps(context) {
 
 export default function First() {
 
+  const user = useContext(UserContext);
+
   return (
     <>
       <Head>
@@ -40,9 +44,9 @@ export default function First() {
 
           <section className="text-gray-600 body-font py-8">
             <h1 className="text-center font-medium text-3xl dark:text-white mb-4">Admin First</h1>
-            <h1 className="text-center font-medium text-xl dark:text-white mb-4">Protected using Middleware and getServerSideProps</h1>
-            {/* <h1 className="text-center font-medium text-xl dark:text-white">Username : {user.username}</h1>
-            <h1 className="text-center font-medium text-xl dark:text-white">Token : {user.token}</h1> */}
+            <h1 className="text-center font-medium text-xl dark:text-white mb-4">Protected using getServerSideProps</h1>
+            <h1 className="text-center font-medium text-xl dark:text-white">Username : {user.username}</h1>
+            <h1 className="text-center font-medium text-xl dark:text-white">Token : {user.token}</h1>
           </section>
 
         </main>

@@ -1,12 +1,33 @@
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { UserContext } from "@utils/useUser";
 import Head from 'next/head'
-import Router from "next/router";
 import Footer from '@components/Footer'
 import Navbar from '@components/Navbar'
 import Layout from '@components/Layout';
+import nookies from 'nookies'
+
+export async function getServerSideProps(context) {
+
+  const cookies = nookies.get(context)
+  // console.log(cookies)
+  if (!cookies.token) {
+    return {
+      redirect: {
+        destination: "/login"
+      }
+    }
+  }
+
+  return {
+    props: {
+      // token
+    }
+  }
+}
 
 export default function Second() {
+
+  const user = useContext(UserContext);
 
   return (
     <>
@@ -24,9 +45,9 @@ export default function Second() {
 
           <section className="text-gray-600 body-font py-8">
             <h1 className="text-center font-medium text-3xl dark:text-white mb-4">Admin Second</h1>
-            <h1 className="text-center font-medium text-xl dark:text-white mb-4">Protected using Middleware and getServerSideProps</h1>
-            {/* <h1 className="text-center font-medium text-xl dark:text-white">Username : {user.username}</h1>
-            <h1 className="text-center font-medium text-xl dark:text-white">Token : {user.token}</h1> */}
+            <h1 className="text-center font-medium text-xl dark:text-white mb-4">Protected using getServerSideProps</h1>
+            <h1 className="text-center font-medium text-xl dark:text-white">Username : {user.username}</h1>
+            <h1 className="text-center font-medium text-xl dark:text-white">Token : {user.token}</h1>
           </section>
 
         </main>

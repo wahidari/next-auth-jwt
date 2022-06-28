@@ -10,7 +10,7 @@ export default function handler(req, res) {
 
   switch (method) {
     case 'POST':
-      if (username === 'admin' && password === 'admin') {
+      if (username === 'admin' && password === 'password') {
         const token = jwt.sign({ id: 1, username: username }, process.env.JWT_SECRET );
         res.status(200).json({ status: 200, token });
       } else {

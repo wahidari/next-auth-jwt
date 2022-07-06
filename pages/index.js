@@ -20,7 +20,13 @@ export default function Index() {
         <main className="max-w-7xl mx-auto px-4 sm:px-6 md:px-8 min-h-screen">
 
           <section className="text-gray-600 body-font py-8">
-            <h1 className="text-center font-medium text-3xl dark:text-white">Home</h1>
+            <h1 className="text-center font-medium text-3xl dark:text-white mb-6">Example how to Auth in NextJS</h1>
+            <div className="flex justify-center md:mx-16">
+              <ul className="dark:text-white">
+                <li><b>Client Protected</b> using client side <b>useEffect</b> Auth Check that cause flashing content before redirected to login page</li>
+                <li><b>Server Protected</b> using <b>getServerSideProps</b> automatically redirected to login page before content being render</li>
+              </ul>
+            </div>
           </section>
 
         </main>
